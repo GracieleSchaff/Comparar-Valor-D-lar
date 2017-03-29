@@ -43,13 +43,17 @@ Então(/^acesse a área de economia$/) do
 end
 
 Então(/^compare o valor do dólar se é menor que (\d+),(\d+)$/) do |arg1, arg2|
-dolar = find(:xpath, "//*[@id='cambio']/ul/li[1]/p[2]/span").text
-  valor = "3,20"
+dolar = find(:xpath, "//*[@id='cambio']/ul/li[1]/p[2]").text
+dolar = dolar[9,6]
+'%.4f' % 'dolar'.to_f
+print dolar 
+valor = '3,200'
+'%.5f' % valor.to_f
+print valor
   if dolar < valor
 puts "Executado com sucesso!"
  # next 
   else
   puts "Erro!"
-  valor = valor / 0
   end
 end
